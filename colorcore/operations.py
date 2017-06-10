@@ -48,11 +48,12 @@ class Controller(object):
         self.cache_factory = cache_factory
         self.event_loop = event_loop
         self.convert = Convert(configuration.asset_byte)
+        bitcoin.SelectParams('testnet')
 
     @asyncio.coroutine
     def getbalance(self,
         address: "Obtain the balance of this address only, or all addresses if unspecified"=None,
-        minconf: "The minimum number of confirmations (inclusive)"='1',
+        minconf: "The minimum number of confirmations (inclusive)"='0',
         maxconf: "The maximum number of confirmations (inclusive)"='9999999'
     ):
         """Obtains the balance of the wallet or an address."""
